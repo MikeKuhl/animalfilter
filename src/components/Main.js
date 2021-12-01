@@ -1,13 +1,7 @@
 import React from "react";
-import CatPics from "./catPics";
+import HornedGallery from "./HornedBeast.js";
+
 function Main() {
-  return (
-    <div>
-      <CatPics name='cat name' description='cat description' />
-      <CatPics />
-      <CatPics />
-      <CatPics />
-    </div>
-  );
+  return <HornedGallery />;
 }
 export default Main;
