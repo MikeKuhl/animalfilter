@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Main from "./components/Main";
 import "./index.css";
 // import Main from "./Main";
 import reportWebVitals from "./reportWebVitals";
@@ -11,9 +8,6 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Header />
-    <Footer />
-    <Main />
   </React.StrictMode>,
   document.getElementById("root")
 );
