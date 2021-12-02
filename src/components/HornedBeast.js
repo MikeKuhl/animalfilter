@@ -65,7 +65,9 @@ export default class HornedBeast extends Component {
                   This beast has been favorited {this.state.favorites}
                 </Card.Text>
                 <Button variant='primary' onClick={this.handleClick}>
-                  Favorite
+                  <span role='img' aria-label='Sparkle Hear'>
+                    Favorite 💖
+                  </span>
                 </Button>
               </Card.Body>
             </div>
