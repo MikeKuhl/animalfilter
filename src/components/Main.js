@@ -1,7 +1,7 @@
 import React from "react";
-import HornedGallery from "./HornedBeast.js";
-
+import HornedBeast from "./HornedBeast.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
 function Main() {
-  return <HornedGallery />;
+  return <HornedBeast />;
 }
 export default Main;
