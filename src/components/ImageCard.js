@@ -1,14 +1,32 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import { Button, Card } from "react-bootstrap";
-
 export default class ImageCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       favorites: 0,
+      shouldShowModal: false,
+      modalImageSrc: "",
+      imageDescription: "",
+      title: "",
     };
   }
+  openModal = (title) => (props) => {
+    this.setState({ shouldShowModal: true });
+    this.setState({ modalImageSrc: props.target.src });
+    this.setState({ imageDescription: props.target.alt });
+
+    this.setState({ title: title });
+    console.log(title);
+  };
+
+  closeModal = () => {
+    this.setState({ shouldShowModal: false });
+    this.setState({ modalImageSrc: "" });
+    this.setState({ imageDescription: "" });
+    this.setState({ imageTitle: "" });
+  };
 
   handleClick = () => {
     this.setState({ favorites: this.state.favorites + 1 });
@@ -16,7 +34,7 @@ export default class ImageCard extends Component {
 
   render() {
     return (
-      <div className='beasts' key={this.props.key}>
+      <div className='beasts' key={this.props.id}>
         <Card.Img
           variant='top'
           src={this.props.modalImageSrc}
