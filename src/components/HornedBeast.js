@@ -1,13 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import jsonGallery from "../data/data.json";
+import ImageCard from "./ImageCard";
 import SelectedBeast from "./SelectedBeast";
 export default class HornedBeast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favorites: 0,
       shouldShowModal: false,
       modalImageSrc: "",
       imageDescription: "",
@@ -32,9 +32,6 @@ export default class HornedBeast extends Component {
     this.setState({ imageTitle: "" });
   };
 
-  handleClick = () => {
-    this.setState({ favorites: this.state.favorites + 1 });
-  };
   render() {
     return (
       <div>
@@ -48,29 +45,17 @@ export default class HornedBeast extends Component {
 
         <Card style={{ width: "18rem" }}>
           {jsonGallery.map((image, i) => (
-            <div className='beasts' key={i}>
-              <Card.Img
-                variant='top'
-                src={image.image_url}
-                alt={image.description}
-                key={i}
-                onClick={this.openModal(image.title)}
-              />
-              <Card.Body>
-                <Card.Title>{image.title}</Card.Title>
-                {/* TODO: Add description */}
-                <Card.Text>{image.description} </Card.Text>
-                <Card.Text>Number of horns {image.horns}</Card.Text>
-                <Card.Text>
-                  This beast has been favorited {this.state.favorites}
-                </Card.Text>
-                <Button variant='primary' onClick={this.handleClick}>
-                  <span role='img' aria-label='Sparkle Hear'>
-                    Favorite 💖
-                  </span>
-                </Button>
-              </Card.Body>
-            </div>
+            <ImageCard
+              image={image}
+              key={i}
+              favorites={this.state.favorites}
+              handleClick={this.handleClick}
+              openModal={this.openModal}
+              imageDescription={image.imageDescription}
+              title={image.title}
+              horns={image.horns}
+              modalImageSrc={image.image_url}
+            />
           ))}
         </Card>
       </div>
